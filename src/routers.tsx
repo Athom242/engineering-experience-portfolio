@@ -8,6 +8,7 @@ import About from "../pages/About/About";
 import Engineering from "../pages/Engineering/Engineering";
 import Data from "../pages/Data/Data";
 import Contact from "../pages/Contact/Contact";
+import PageNotFound from "../pages/ErreurPage/PageNotFound";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,12 @@ export const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+      },
+
+      // ✅ 404 PAGE (CORRECT)
+      {
+        path: "*",
+        element: <PageNotFound />,
       },
     ],
   },
