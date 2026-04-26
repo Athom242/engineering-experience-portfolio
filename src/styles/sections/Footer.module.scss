@@ -1,0 +1,401 @@
+// Footer.module.scss
+// Requires: @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400&display=swap'); in globals.scss
+
+// ── Variables ──────────────────────────────────────────────
+$bg:          #0a0a09;
+$text:        #e8e4d9;
+$accent:      #c8f055;
+$accent-hover:#deff66;
+$mono:        "DM Mono", monospace;
+$display:     "Syne", sans-serif;
+
+$text-dim-1:  rgba($text, 0.55);
+$text-dim-2:  rgba($text, 0.45);
+$text-dim-3:  rgba($text, 0.35);
+$text-dim-4:  rgba($text, 0.25);
+$text-dim-5:  rgba($text, 0.2);
+$border-sub:  rgba($text, 0.08);
+$border-faint:rgba($text, 0.06);
+$border-light:rgba($text, 0.1);
+
+$pad-h: 56px;
+$pad-h-md: 24px;
+
+// ── Mixins ────────────────────────────────────────────────
+@mixin mono($size: 11px, $spacing: 0.12em) {
+  font-family: $mono;
+  font-size: $size;
+  letter-spacing: $spacing;
+}
+
+@mixin label {
+  @include mono(9px, 0.25em);
+  text-transform: uppercase;
+  color: $text-dim-4;
+  margin-bottom: 20px;
+}
+
+@mixin accent-line($width: 24px) {
+  content: "";
+  display: inline-block;
+  width: $width;
+  height: 1px;
+  background: $accent;
+}
+
+// ── Keyframes ─────────────────────────────────────────────
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+// ── Root ──────────────────────────────────────────────────
+.footerWrap {
+  background: $bg;
+  color: $text;
+  font-family: $display;
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+}
+
+// ── Custom cursor ─────────────────────────────────────────
+.cursor {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: $accent;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+
+  &.hovered {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.cursorRing {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba($accent, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s, height 0.25s, border-color 0.2s;
+
+  &.ringHovered {
+    width: 56px;
+    height: 56px;
+    border-color: rgba($accent, 0.6);
+  }
+}
+
+// ── Marquee ───────────────────────────────────────────────
+.marqueeWrap {
+  overflow: hidden;
+  border-top: 1px solid $border-sub;
+  border-bottom: 1px solid $border-sub;
+  padding: 18px 0;
+}
+
+.marquee {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 22s linear infinite;
+
+  span {
+    @include mono(11px, 0.18em);
+    font-weight: 300;
+    color: rgba($text, 0.3);
+    text-transform: uppercase;
+    padding: 0 40px;
+
+    em {
+      color: $accent;
+      font-style: normal;
+    }
+  }
+}
+
+// ── Hero ──────────────────────────────────────────────────
+.hero {
+  padding: 80px $pad-h 0;
+}
+
+.heroLabel {
+  @include mono(10px, 0.22em);
+  color: $text-dim-3;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &::before {
+    @include accent-line(24px);
+  }
+}
+
+.ctaBlock {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.ctaTitle {
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: $text;
+  max-width: 520px;
+}
+
+.accent {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba($text, 0.25);
+  transition: -webkit-text-stroke 0.4s, color 0.4s;
+  display: inline-block;
+
+  &:hover {
+    color: $accent;
+    -webkit-text-stroke: 1px transparent;
+  }
+}
+
+.ctaRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 8px;
+}
+
+.btnContact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: $accent;
+  color: $bg;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-family: $display;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: none;
+  transition: background 0.25s, transform 0.2s;
+
+  &:hover {
+    background: $accent-hover;
+    transform: scale(1.04);
+
+    .arrow {
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: $bg;
+  border-radius: 50%;
+  font-size: 12px;
+  transition: transform 0.2s;
+}
+
+.email {
+  @include mono(12px, 0.05em);
+  color: rgba($text, 0.4);
+  transition: color 0.25s;
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+// ── Partners ──────────────────────────────────────────────
+.partners {
+  padding: 56px $pad-h 0;
+}
+
+.partnersRow {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.partnerBadge {
+  padding: 10px 20px;
+  border: 1px solid $border-light;
+  border-radius: 6px;
+  @include mono(11px, 0.12em);
+  color: rgba($text, 0.3);
+  text-transform: uppercase;
+  cursor: none;
+  transition: border-color 0.25s, color 0.25s;
+
+  &:hover {
+    border-color: rgba($accent, 0.35);
+    color: rgba($accent, 0.7);
+  }
+}
+
+// ── Grid ──────────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: 56px $pad-h 0;
+  border-top: 1px solid $border-faint;
+  margin-top: 56px;
+}
+
+.col {
+  padding-right: 40px;
+}
+
+.colLabel {
+  @include label;
+}
+
+.tagline {
+  font-size: 14px;
+  font-weight: 400;
+  color: $text-dim-2;
+  line-height: 1.7;
+  max-width: 240px;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  li,
+  li a {
+    font-size: 14px;
+    color: $text-dim-1;
+    text-decoration: none;
+    cursor: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 0;
+      height: 1px;
+      background: $accent;
+      margin-right: 0;
+      flex-shrink: 0;
+      transition: width 0.22s, margin-right 0.22s;
+    }
+
+    &:hover {
+      color: $text;
+
+      &::before {
+        width: 14px;
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+// ── Bottom bar ────────────────────────────────────────────
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px $pad-h;
+  margin-top: 48px;
+  border-top: 1px solid $border-faint;
+}
+
+.bottomLeft {
+  @include mono(11px, 0.06em);
+  color: $text-dim-5;
+}
+
+.bottomRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: $accent;
+  border-radius: 50%;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+.statusText {
+  @include mono(10px, 0.12em);
+  color: rgba($accent, 0.6);
+  text-transform: uppercase;
+}
+
+// ── Responsive ────────────────────────────────────────────
+@media (max-width: 768px) {
+  .hero {
+    padding: 48px $pad-h-md 0;
+  }
+
+  .ctaBlock {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ctaRight {
+    align-items: flex-start;
+  }
+
+  .partners {
+    padding: 40px $pad-h-md 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 40px $pad-h-md 0;
+    margin-top: 40px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px $pad-h-md;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
