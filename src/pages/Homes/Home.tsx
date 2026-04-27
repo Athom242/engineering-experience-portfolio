@@ -7,9 +7,9 @@ import BannerSection from "../../sections/BannerSection";
 const Home:React.FC = () => {
     return (
         <div className="home-page">
-            <h1>Welcome to My Portfolio</h1>
+            {/* <h1>Welcome to My Portfolio</h1>
             <p>Discover my projects, engineering experience, and data insights.</p>
-            {/* <Header/> */}
+            <Header/> */}
             <BannerSection/>
             {/* <Footer/> */}
         </div>
