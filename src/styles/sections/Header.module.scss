@@ -1,0 +1,448 @@
+// Header.module.scss
+// Same design system as Footer.module.scss
+
+// ── Variables ──────────────────────────────────────────────
+$bg:           #0a0a09;
+$bg-light:     #f4f0e8;
+$text:         #e8e4d9;
+$text-light:   #1a1a18;
+$accent:       #c8f055;
+$accent-hover: #deff66;
+$mono:         "DM Mono", monospace;
+$display:      "Syne", sans-serif;
+
+$border-sub:   rgba(232, 228, 217, 0.08);
+$border-light-theme: rgba(26, 26, 24, 0.08);
+
+$header-h:     72px;
+$pad-h:        40px;
+
+// ── Mixins ────────────────────────────────────────────────
+@mixin mono($size: 11px, $spacing: 0.12em) {
+  font-family: $mono;
+  font-size: $size;
+  letter-spacing: $spacing;
+}
+
+@mixin reset-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+// ── Keyframes ─────────────────────────────────────────────
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ── CSS theme variables (toggled via data-theme on <html>) ──
+:root,
+[data-theme="dark"] {
+  --hd-bg:        #{$bg};
+  --hd-bg-scroll: rgba(10, 10, 9, 0.88);
+  --hd-text:      #{$text};
+  --hd-text-dim:  rgba(232, 228, 217, 0.45);
+  --hd-border:    #{$border-sub};
+}
+[data-theme="light"] {
+  --hd-bg:        #{$bg-light};
+  --hd-bg-scroll: rgba(244, 240, 232, 0.88);
+  --hd-text:      #{$text-light};
+  --hd-text-dim:  rgba(26, 26, 24, 0.45);
+  --hd-border:    #{$border-light-theme};
+}
+
+// ── Header shell ──────────────────────────────────────────
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: $header-h;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $pad-h;
+  background: transparent;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease,
+              border-bottom 0.4s ease, height 0.3s ease;
+
+  &.scrolled {
+    background: var(--hd-bg-scroll);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    border-bottom: 1px solid var(--hd-border);
+    height: 60px;
+
+    .logoText em {
+      color: $accent;
+    }
+  }
+
+  &.menuOpened {
+    background: transparent;
+    border-bottom: none;
+    backdrop-filter: none;
+  }
+}
+
+// ── Logo ──────────────────────────────────────────────────
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  animation: fadeInDown 0.6s ease both;
+  z-index: 1100;
+}
+
+.logoMark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: $accent;
+  color: $bg;
+  font-family: $display;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: transform 0.25s, background 0.25s;
+
+  .logo:hover & {
+    transform: rotate(-6deg) scale(1.08);
+    background: $accent-hover;
+  }
+}
+
+.logoText {
+  font-family: $display;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--hd-text);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+
+  em {
+    font-style: normal;
+    color: var(--hd-text-dim);
+    transition: color 0.3s;
+  }
+}
+
+// ── Nav ───────────────────────────────────────────────────
+.nav {
+  @media (max-width: 900px) { display: none; }
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  animation: fadeInDown 0.6s 0.1s ease both;
+}
+
+.navItem,
+.navItemActive {
+  a {
+    position: relative;
+    @include mono(11px, 0.1em);
+    text-transform: uppercase;
+    color: var(--hd-text-dim);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.22s;
+
+    &:hover {
+      color: var(--hd-text);
+
+      .navDot {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.navItemActive a {
+  color: var(--hd-text);
+
+  .navDot {
+    opacity: 1;
+    transform: scale(1);
+    background: $accent;
+  }
+}
+
+.navDot {
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: $accent;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+// ── Controls ──────────────────────────────────────────────
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: fadeInDown 0.6s 0.2s ease both;
+  z-index: 1100;
+}
+
+// Lang toggle
+.langToggle {
+  @include reset-btn;
+  @include mono(10px, 0.14em);
+  color: var(--hd-text-dim);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+
+  &:hover { color: var(--hd-text); }
+
+  @media (max-width: 600px) { display: none; }
+}
+
+.langSep {
+  opacity: 0.3;
+}
+
+.langActive {
+  color: $accent;
+  font-weight: 400;
+}
+
+// Theme toggle
+.themeToggle {
+  @include reset-btn;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--hd-text-dim);
+  transition: color 0.2s;
+
+  &:hover { color: var(--hd-text); }
+
+  @media (max-width: 600px) { display: none; }
+}
+
+.themeTrack {
+  display: inline-block;
+  width: 32px;
+  height: 18px;
+  background: var(--hd-border);
+  border: 1px solid var(--hd-border);
+  border-radius: 100px;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.themeThumb {
+  position: absolute;
+  top: 2px;
+  width: 12px;
+  height: 12px;
+  background: $accent;
+  border-radius: 50%;
+  transition: left 0.3s ease;
+
+  &.themeDark { left: 2px; }
+  &.themeLight { left: calc(100% - 14px); }
+}
+
+.themeLabel {
+  @include mono(12px);
+  color: var(--hd-text-dim);
+}
+
+// CTA button
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: $accent;
+  color: $bg;
+  font-family: $display;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 100px;
+  transition: background 0.25s, transform 0.2s;
+
+  &:hover {
+    background: $accent-hover;
+    transform: scale(1.04);
+
+    .ctaArrow { transform: rotate(45deg); }
+  }
+
+  @media (max-width: 600px) { display: none; }
+}
+
+.ctaArrow {
+  display: inline-block;
+  transition: transform 0.2s;
+  font-size: 14px;
+}
+
+// ── Burger ────────────────────────────────────────────────
+.burger {
+  @include reset-btn;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+
+  @media (max-width: 900px) { display: flex; }
+
+  span {
+    display: block;
+    height: 1.5px;
+    background: var(--hd-text);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+    transform-origin: center;
+
+    &:nth-child(1) { width: 100%; }
+    &:nth-child(2) { width: 70%; }
+    &:nth-child(3) { width: 100%; }
+  }
+
+  &.burgerOpen span {
+    &:nth-child(1) { transform: translateY(6.5px) rotate(45deg); width: 100%; }
+    &:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    &:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  }
+}
+
+// ── Mobile overlay ────────────────────────────────────────
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: var(--hd-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px $pad-h 48px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+
+  &.overlayOpen {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.overlayNav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.overlayLink {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: $display;
+  font-size: clamp(36px, 10vw, 72px);
+  font-weight: 800;
+  color: var(--hd-text);
+  text-decoration: none;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, color 0.2s;
+
+  .overlayOpen & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    color: $accent;
+    .overlayIndex { color: $accent; }
+  }
+}
+
+.overlayIndex {
+  @include mono(11px, 0.15em);
+  color: var(--hd-text-dim);
+  margin-top: 6px;
+  transition: color 0.2s;
+}
+
+.overlayBottom {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--hd-border);
+  padding-top: 24px;
+}
+
+.overlayEmail {
+  @include mono(12px, 0.06em);
+  color: var(--hd-text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover { color: $accent; }
+}
+
+.overlayControls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  .langToggle,
+  .themeToggle {
+    display: flex;
+    @include mono(11px, 0.1em);
+    color: var(--hd-text-dim);
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border: 1px solid var(--hd-border);
+    border-radius: 100px;
+    transition: color 0.2s, border-color 0.2s;
+
+    &:hover {
+      color: $accent;
+      border-color: rgba($accent, 0.4);
+    }
+  }
+}
+
+// ── Responsive padding ────────────────────────────────────
+@media (max-width: 600px) {
+  .header { padding: 0 20px; }
+  .overlay { padding: 80px 20px 40px; }
+}
