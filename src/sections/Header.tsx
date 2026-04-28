@@ -60,7 +60,7 @@ const Header: React.FC = () => {
           </span>
           <span className={styles.logoText}>
             {config.siteName}
-            <em>{config.header.logo.label}</em>
+            {/* <em>{config.header.logo.label}</em> */}
           </span>
         </a>
 
