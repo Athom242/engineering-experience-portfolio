@@ -7,7 +7,7 @@ import AboutSection from "../../sections/AboutSection";
 import ProjectsSection from "../../sections/ProjectsSection";
 import SkillSection from "../../sections/SkillsSection";
 import ExperienceSection from "../../sections/ExperienceSection";
-import TestimonialsSection from "../../sections/Testimonials";
+import TestimonialsSection from "../../sections/TestimonialsSection";
 import ContactSection from "../../sections/ContactSection";
 import LiveDashboardSection from "../../sections/LiveDashboardSection";
 

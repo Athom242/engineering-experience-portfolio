@@ -44,7 +44,7 @@ const siteConfig: SiteConfig = {
 
     cta: {
       label: "Hire me",
-      email: "hello@engineering.dev"
+      email: "hello@engineering.dev.com"
     },
 
     defaultLanguage: "EN",
