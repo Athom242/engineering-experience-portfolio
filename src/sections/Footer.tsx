@@ -1,24 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import styleElt from "./../styles/sections/Footer.module.scss";
-
-const MARQUEE_ITEMS = [
-  "Full-Stack Dev",
-  "Data Analysis",
-  "Systems Engineering",
-  "3D & Simulation",
-  "Engineering Experience",
-];
-
-const NAV_LINKS = ["Home", "Projects", "Engineering", "Data", "Contact"];
-const EXPERTISE = ["Full-Stack Dev", "Data Analysis", "Systems Eng.", "3D & Simulation"];
-const SOCIALS = [
-  { label: "GitHub", href: "https://github.com/" },
-  { label: "LinkedIn", href: "https://linkedin.com/" },
-  { label: "Email", href: "mailto:hello@engineering.dev" },
-];
-const PARTNERS = ["Partenaire 01", "Partenaire 02", "Partenaire 03"];
+import  siteConfig  from "../data/config.data";
 
 const Footer: React.FC = () => {
+  const config = siteConfig.footer;
+
   const cursorRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const wrapRef = useRef<HTMLElement>(null);
@@ -37,42 +23,18 @@ const Footer: React.FC = () => {
     };
 
     wrap.addEventListener("mousemove", onMove);
-
-    const hoverEls = wrap.querySelectorAll<HTMLElement>(
-      `a, button, .${styleElt.partnerBadge}, li, .${styleElt.accent}`
-    );
-    const addHover = () => {
-      cursor.classList.add(styleElt.hovered);
-      ring.classList.add(styleElt.ringHovered);
-    };
-    const removeHover = () => {
-      cursor.classList.remove(styleElt.hovered);
-      ring.classList.remove(styleElt.ringHovered);
-    };
-    hoverEls.forEach((el) => {
-      el.addEventListener("mouseenter", addHover);
-      el.addEventListener("mouseleave", removeHover);
-    });
-
-    return () => {
-      wrap.removeEventListener("mousemove", onMove);
-      hoverEls.forEach((el) => {
-        el.removeEventListener("mouseenter", addHover);
-        el.removeEventListener("mouseleave", removeHover);
-      });
-    };
+    return () => wrap.removeEventListener("mousemove", onMove);
   }, []);
 
   return (
     <footer className={styleElt.footerWrap} ref={wrapRef}>
-      {/* Custom cursor */}
       <div className={styleElt.cursor} ref={cursorRef} />
       <div className={styleElt.cursorRing} ref={ringRef} />
 
-      {/* Marquee */}
+      {/* MARQUEE */}
       <div className={styleElt.marqueeWrap}>
         <div className={styleElt.marquee}>
-          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
+          {[...config.marquee, ...config.marquee].map((item, i) => (
             <span key={i}>
               {item} <em>×</em>
             </span>
@@ -80,31 +42,41 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Hero CTA */}
+      {/* CTA */}
       <div className={styleElt.hero}>
-        <div className={styleElt.heroLabel}>Available for projects — 2026</div>
+        <div className={styleElt.heroLabel}>
+          {config.cta.subtitle}
+        </div>
+
         <div className={styleElt.ctaBlock}>
           <h2 className={styleElt.ctaTitle}>
-            Let&apos;s
-            <br />
-            <span className={styleElt.accent}>build</span>
-            <br />
-            together.
+            {config.cta.title.split(" ").map((w, i) => (
+              <span key={i}>
+                {w} <br />
+              </span>
+            ))}
           </h2>
+
           <div className={styleElt.ctaRight}>
-            <a className={styleElt.btnContact} href="mailto:hello@engineering.dev">
-              Get in touch <span className={styleElt.arrow}>↗</span>
+            <a
+              className={styleElt.btnContact}
+              href={`mailto:${config.cta.email}`}
+            >
+              {config.cta.buttonLabel} ↗
             </a>
-            <span className={styleElt.email}>hello@engineering.dev</span>
+
+            <span className={styleElt.email}>
+              {config.cta.email}
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Partners */}
+      {/* PARTNERS */}
       <div className={styleElt.partners}>
-        <div className={styleElt.colLabel}>Collaborations & tools</div>
+        <div className={styleElt.colLabel}>Collaborations</div>
         <div className={styleElt.partnersRow}>
-          {PARTNERS.map((p) => (
+          {config.partners.map((p) => (
             <div key={p} className={styleElt.partnerBadge}>
               {p}
             </div>
@@ -112,22 +84,21 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Grid */}
+      {/* GRID */}
       <div className={styleElt.grid}>
         <div className={styleElt.col}>
           <div className={styleElt.colLabel}>About</div>
           <p className={styleElt.tagline}>
-            Building systems across software, data, and engineering. One
-            pixel-perfect solution at a time.
+            {config.about.tagline}
           </p>
         </div>
 
         <div className={styleElt.col}>
           <div className={styleElt.colLabel}>Navigation</div>
           <ul className={styleElt.navList}>
-            {NAV_LINKS.map((item) => (
-              <li key={item}>
-                <a href="#">{item}</a>
+            {config.navigation.map((item) => (
+              <li key={item.label}>
+                <a href={item.href}>{item.label}</a>
               </li>
             ))}
           </ul>
@@ -136,7 +107,7 @@ const Footer: React.FC = () => {
         <div className={styleElt.col}>
           <div className={styleElt.colLabel}>Expertise</div>
           <ul className={styleElt.navList}>
-            {EXPERTISE.map((item) => (
+            {config.expertise.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
@@ -145,10 +116,10 @@ const Footer: React.FC = () => {
         <div className={styleElt.col}>
           <div className={styleElt.colLabel}>Connect</div>
           <ul className={styleElt.navList}>
-            {SOCIALS.map(({ label, href }) => (
-              <li key={label}>
-                <a href={href} target="_blank" rel="noopener noreferrer">
-                  {label} ↗
+            {config.socials.map((s) => (
+              <li key={s.name}>
+                <a href={s.url} target="_blank">
+                  {s.name} ↗
                 </a>
               </li>
             ))}
@@ -156,14 +127,15 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Bottom bar */}
+      {/* STATUS */}
       <div className={styleElt.bottom}>
-        <span className={styleElt.bottomLeft}>
-          © 2026 Engineering Experience — All rights reserved
+        <span>
+          © 2026 {siteConfig.siteName}
         </span>
-        <div className={styleElt.bottomRight}>
+
+        <div>
           <span className={styleElt.statusDot} />
-          <span className={styleElt.statusText}>Open to work</span>
+          <span>{config.status.text}</span>
         </div>
       </div>
     </footer>
