@@ -4,6 +4,9 @@ import React from "react"
 import BannerSection from "../../sections/BannerSection";
 
 
+
+
+
 const Home:React.FC = () => {
     return (
         <div className="home-page">
