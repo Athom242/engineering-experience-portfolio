@@ -1,4 +1,4 @@
-import { type Partenaire } from "./../../types/partenaires.types";
+import { type Partenaire } from "../types/partenaires.types";
 
 const items: Partenaire[] = [
   // 🟡 FORMATION & UNIVERSITÉS
