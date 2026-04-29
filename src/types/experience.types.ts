@@ -1,4 +1,4 @@
-import { TypeExperience } from "./common.types";
+import { type TypeExperience } from "./common.types";
 
 export interface Experience {
   id: string;

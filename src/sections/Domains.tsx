@@ -27,6 +27,7 @@ const DOMAIN_DATA = [
         title: "Project Management",
         description: "Find out about my project management skills, including methodologies, tools, and successful projects I've managed.",
         link: "/project-management",
+
     },
     {
         id: 5,
