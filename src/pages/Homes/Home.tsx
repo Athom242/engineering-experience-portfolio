@@ -1,6 +1,7 @@
 import React from "react"
 // import Header from "../../sections/Header";
 // import Footer from "../../sections/Footer";
+import LoaderComponent from "../../Components/LoaderComponent";
 import BannerSection from "../../sections/BannerSection";
 import VisualScrollBarProgress from "../../sections/VisualisationScroll";
 import AboutSection from "../../sections/AboutSection";
@@ -20,6 +21,7 @@ const Home:React.FC = () => {
             {/* <h1>Welcome to My Portfolio</h1>
             <p>Discover my projects, engineering experience, and data insights.</p>
             <Header/> */}
+            <LoaderComponent/>
             <BannerSection/>
             <VisualScrollBarProgress/> {/* //ceci est un composant de notre page il est à des fin decoratifs sans plus  */}
             <AboutSection />
