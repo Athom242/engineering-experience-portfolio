@@ -1,5 +1,79 @@
+.about {
+  padding: 120px 10%;
+  background: #0a0a09;
+  color: white;
+}
 
+/* ===== INTRO ===== */
+.intro {
+  margin-bottom: 60px;
+}
 
-.aboutSection{
-    
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+/* ===== MANIFESTE ===== */
+.manifesto {
+  max-width: 800px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 80px;
+}
+
+.manifesto strong {
+  color: #c8f055;
+}
+
+/* ===== GRID ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.card {
+  padding: 25px;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: 0.3s ease;
+  background: rgba(255,255,255,0.02);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #c8f055;
+}
+
+.card span {
+  color: #c8f055;
+  font-size: 0.9rem;
+}
+
+.card h3 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+.card p {
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+/* ===== VISION ===== */
+.vision {
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.vision h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }

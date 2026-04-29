@@ -1,0 +1,131 @@
+.grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  z-index: 2;
+}
+
+.tile {
+  background: rgba(255,255,255,0.04);
+  transform: translateY(0);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+
+.quake .tile {
+  animation: shake 0.3s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-6px); }
+  50% { transform: translateY(6px); }
+  75% { transform: translateY(-3px); }
+  100% { transform: translateY(3px); }
+}
+
+
+.wave {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px solid #c8f055;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+}
+
+.shock .wave {
+  animation: wave 1s ease-out forwards;
+}
+
+@keyframes wave {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(8); opacity: 0; }
+}
+
+
+.chaos .tile {
+  animation: chaosMove 1s ease-in-out forwards;
+}
+
+.chaos .tile:nth-child(odd) {
+  transform: translateY(-40px);
+}
+
+.chaos .tile:nth-child(even) {
+  transform: translateY(40px);
+}
+
+@keyframes chaosMove {
+  to {
+    transform: translateY(0);
+  }
+}
+
+
+.curtains {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 4;
+}
+
+.curtain {
+  flex: 1;
+  background: #0f0f0f;
+  transform: translateY(100%);
+  transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.clean .curtain {
+  transform: translateY(-100%);
+}
+
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 5rem;
+  color: #c8f055;
+  display: flex;
+  gap: 10px;
+}
+
+.e2 {
+  transform: rotate(-15deg);
+}
+
+.exit .logo {
+  animation: bounceToHeader 1.2s ease forwards;
+}
+
+@keyframes bounceToHeader {
+  0% {
+    transform: translate(-50%,-50%) scale(1);
+  }
+  50% {
+    transform: translate(-20px,-120px) scale(0.8);
+  }
+  100% {
+    transform: translate(-50vw,-45vh) scale(0.3);
+    opacity: 0;
+  }
+}
+
+.headerLogo {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  opacity: 0;
+}
+
+.exit .headerLogo {
+  opacity: 1;
+  transition: 0.8s ease;
+}

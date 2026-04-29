@@ -1,0 +1,194 @@
+.projects {
+  padding: 120px 10%;
+  background: #0a0a09;
+  color: #ffffff;
+  position: relative;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  margin-bottom: 60px;
+
+  h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+
+  p {
+    margin-top: 10px;
+    max-width: 650px;
+    opacity: 0.7;
+    line-height: 1.6;
+  }
+}
+
+/* =========================
+   GRID
+========================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   CARD
+========================= */
+.card {
+  position: relative;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.35s ease;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-10px);
+    border-color: rgba(200, 240, 85, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* =========================
+   TOP ROW (id + status)
+========================= */
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.id {
+  font-size: 0.75rem;
+  opacity: 0.4;
+}
+
+/* STATUS */
+.status {
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.done {
+  background: rgba(124, 255, 155, 0.1);
+  color: #7cff9b;
+  border: 1px solid rgba(124, 255, 155, 0.3);
+}
+
+.progress {
+  background: rgba(255, 211, 124, 0.1);
+  color: #ffd37c;
+  border: 1px solid rgba(255, 211, 124, 0.3);
+}
+
+/* =========================
+   TITLE
+========================= */
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  transition: 0.3s ease;
+}
+
+.card:hover .title {
+  color: #c8f055;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+.description {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+/* =========================
+   STACK PRINCIPALE
+========================= */
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.tech {
+  font-size: 0.7rem;
+  padding: 4px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0.8;
+  transition: 0.2s ease;
+
+  &:hover {
+    border-color: #c8f055;
+    color: #c8f055;
+  }
+}
+
+/* =========================
+   TECH LIST
+========================= */
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+
+/* =========================
+   FOOTER ACTIONS
+========================= */
+.footer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+
+  a {
+    color: #c8f055;
+    text-decoration: none;
+    transition: 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+      transform: translateX(3px);
+    }
+  }
+}
+
+/* =========================
+   MICRO ANIMATION (entrée futur upgrade)
+========================= */
+.card {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
