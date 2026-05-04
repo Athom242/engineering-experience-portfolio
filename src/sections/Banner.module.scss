@@ -73,6 +73,8 @@ $pad-h-md: 24px;
     display: flex;
     gap: 1.5rem;
 
+    z-index: 10;
+
     .banner_link{
         font-family: var(--display);
         font-size: 1.25rem;
@@ -87,4 +89,22 @@ $pad-h-md: 24px;
             border-color: var(--accent);
         }
     }
+
+   
 }
+
+ .image_banner_items{
+        position: absolute;
+        top: 0px;
+        
+        width: 100%;
+
+        // z-index:;
+
+        .image_item{
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            
+        }
+    }

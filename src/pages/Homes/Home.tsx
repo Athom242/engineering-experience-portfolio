@@ -21,7 +21,7 @@ const Home:React.FC = () => {
             {/* <h1>Welcome to My Portfolio</h1>
             <p>Discover my projects, engineering experience, and data insights.</p>
             <Header/> */}
-            <LoaderComponent/>
+            {/* <LoaderComponent/> */}
             <BannerSection/>
             <VisualScrollBarProgress/> {/* //ceci est un composant de notre page il est à des fin decoratifs sans plus  */}
             <AboutSection />
