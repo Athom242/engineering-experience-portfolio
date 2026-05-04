@@ -2,10 +2,10 @@ import { type SiteConfig } from "./../types/config.types";
 
 const siteConfig: SiteConfig = {
   siteName: "Engineering Experience",
-  author: "Mous Anth",
+  author: "Moussavou Anthony ",
 
   tagline:
-    "Building systems across software, data, robotics and industrial engineering.",
+    "Designing, simulating and building systems across 3D, software, robotics and industrial engineering.",
 
   theme: {
     primaryColor: "#c8f055",
@@ -15,15 +15,18 @@ const siteConfig: SiteConfig = {
   },
 
   seo: {
-    title: "Engineering Experience Portfolio",
+    title: "Engineering Experience | Interactive Engineering Portfolio",
     description:
-      "Full-Stack Developer, Electromechanical Engineer, Data & Systems Designer",
+      "Interactive portfolio of a multidisciplinary engineer working across 3D creation, robotics, software and electromechanical systems.",
     keywords: [
-      "engineering",
-      "full-stack developer",
+      "engineering portfolio",
       "robotics",
+      "3D animation",
+      "electromechanical systems",
       "automation",
-      "data analysis"
+      "data science",
+      "simulation",
+      "software development"
     ],
     url: "https://engineering-experience.dev"
   },
@@ -37,14 +40,15 @@ const siteConfig: SiteConfig = {
     navLinks: [
       { label: "Home", href: "#home" },
       { label: "Projects", href: "#projects" },
+      { label: "Creative", href: "#creative" },
       { label: "Engineering", href: "#engineering" },
       { label: "Data", href: "#data" },
       { label: "Contact", href: "#contact" }
     ],
 
     cta: {
-      label: "Hire me",
-      email: "hello@engineering.dev.com"
+      label: "Contact Me",
+      email: "hello@engineering.dev"
     },
 
     defaultLanguage: "EN",
@@ -54,32 +58,35 @@ const siteConfig: SiteConfig = {
 
   footer: {
     marquee: [
-      "Full-Stack Development",
-      "Electromechanical Systems",
+      "3D Cinematic Creation",
+      "Robotics & Intelligent Systems",
+      "Electromechanical Engineering",
       "Industrial Automation",
-      "Data Analysis",
-      "Robotics Engineering"
+      "Software & Data Systems",
+      "Simulation & Modeling"
     ],
 
     navigation: [
       { label: "Home", href: "#home" },
       { label: "Projects", href: "#projects" },
+      { label: "Creative", href: "#creative" },
       { label: "Engineering", href: "#engineering" },
       { label: "Data", href: "#data" },
       { label: "Contact", href: "#contact" }
     ],
 
     expertise: [
-      "Full-Stack Dev",
+      "3D & Animation",
+      "Robotics",
       "Electromechanics",
       "Automation",
-      "Data Systems",
-      "3D Simulation"
+      "Software & Data"
     ],
 
     socials: [
       { name: "GitHub", url: "https://github.com/" },
       { name: "LinkedIn", url: "https://linkedin.com/" },
+      { name: "ArtStation", url: "https://artstation.com/" },
       { name: "Email", url: "mailto:hello@engineering.dev" }
     ],
 
@@ -87,32 +94,32 @@ const siteConfig: SiteConfig = {
       "Orange Digital Center",
       "Sonatel",
       "UCAD",
-      "ESEBAT",
-      "CNQP",
       "FabLab Dakar"
     ],
 
     cta: {
-      title: "Let’s build intelligent systems together.",
-      subtitle: "Available for engineering & software projects — 2026",
+      title: "Let’s build together",
+      subtitle:
+        "Available for engineering, software and creative projects.",
       buttonLabel: "Get in touch",
       email: "hello@engineering.dev"
     },
 
     about: {
       tagline:
-        "Building systems across software, data and engineering. One scalable solution at a time."
+        "Multidisciplinary engineer building systems across digital, physical and simulated environments."
     },
 
     status: {
       label: "Open to work",
-      text: "Available for opportunities"
+      text: "Available for opportunities and collaborations"
     }
   },
 
   socialLinks: [
     { name: "GitHub", url: "https://github.com/" },
-    { name: "LinkedIn", url: "https://linkedin.com/" }
+    { name: "LinkedIn", url: "https://linkedin.com/" },
+    { name: "ArtStation", url: "https://artstation.com/" }
   ]
 };
 

@@ -5,16 +5,38 @@ import style from "../styles/sections/Banner.module.scss";
 const IMAGE_BANNER_ITEMS = [
   {
     id: 1,
-    imageUrl: "https://via.placeholder.com/600x400",
+    imageUrl:
+      "https://connectedtechnologysolutions.co.uk/wp-content/uploads/2025/05/Robots-in-Manufacturing.jpg",
     title: "Engineering Systems",
-    description: "Robotics, automation & intelligent systems"
-  }
+    description: "Robotics, automation & intelligent systems",
+  },
+  {
+    id: 2,
+    imageUrl:
+      "https://connectedtechnologysolutions.co.uk/wp-content/uploads/2025/05/Robots-in-Manufacturing.jpg",
+    title: "Engineering Systems",
+    description: "Robotics, automation & intelligent systems",
+  },
+  {
+    id: 3,
+    imageUrl:
+      "https://connectedtechnologysolutions.co.uk/wp-content/uploads/2025/05/Robots-in-Manufacturing.jpg",
+    title: "Engineering Systems",
+    description: "Robotics, automation & intelligent systems",
+  },
+  {
+    id: 4,
+    imageUrl:
+      "https://cdnb.artstation.com/p/assets/images/images/050/675/669/large/onkar-sonavane-6.jpg?1655401631",
+    title: "Art design",
+    description: "desktop art station works",
+  },
 ];
 
 const LINKS = [
   { id: 1, label: "Contact Me", href: "#contact" },
   { id: 2, label: "View Projects", href: "#projects" },
-  { id: 3, label: "Learn More", href: "#about" }
+  { id: 3, label: "Learn More", href: "#about" },
 ];
 
 /* ───── IMAGE CAROUSEL (optionnel futur usage) ───── */
@@ -39,25 +61,21 @@ const BannerSection: React.FC = () => {
   return (
     <section className={style.banner}>
       <div className={style.banner_container}>
-        <h1>
-          Engineering <span>Experience</span>
-        </h1>
+        <div className={style.block_banner_links}>
+          <h1>
+            Engineering <span>Experience</span>
+          </h1>
 
-        <p>
-          Full-Stack Development • Robotics • Automation • Data Systems
-        </p>
+          <p>Full-Stack Development • Robotics • Automation • Data Systems</p>
 
-        {/* LINKS */}
-        <div className={style.banner_links}>
-          {LINKS.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              className={style.banner_link}
-            >
-              {link.label}
-            </a>
-          ))}
+          {/* LINKS */}
+          <div className={style.banner_links}>
+            {LINKS.map((link) => (
+              <a key={link.id} href={link.href} className={style.banner_link}>
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* IMAGE BLOCK */}
