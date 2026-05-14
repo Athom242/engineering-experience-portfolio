@@ -98,7 +98,7 @@ const siteConfig: SiteConfig = {
     ],
 
     cta: {
-      title: "Let’s build together",
+      title: "let’s build together",
       subtitle:
         "Available for engineering, software and creative projects.",
       buttonLabel: "Get in touch",
