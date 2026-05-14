@@ -31,6 +31,12 @@ const IMAGE_BANNER_ITEMS = [
     title: "Art design",
     description: "desktop art station works",
   },
+    {
+    id: 5,
+    imageUrl:
+      "https://connectedtechnologysolutions.co.uk/wp-content/uploads/2025/05/Robots-in-Manufacturing.jpg",
+    title: "Engineering Systems",
+    description: "Robotics, automation & intelligent systems",}
 ];
 
 const LINKS = [
@@ -38,6 +44,28 @@ const LINKS = [
   { id: 2, label: "View Projects", href: "#projects" },
   { id: 3, label: "Learn More", href: "#about" },
 ];
+
+
+const BlockBannerLinks:React.FC=()=>{
+  return (
+        <div className={style.block_banner_links}>
+          <h1>
+            Engineering <span>Experience</span>
+          </h1>
+
+          <p>Full-Stack Development • Robotics • Automation • Data Systems</p>
+
+          {/* LINKS */}
+          <div className={style.banner_links}>
+            {LINKS.map((link) => (
+              <a key={link.id} href={link.href} className={style.banner_link}>
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+  )
+}
 
 /* ───── IMAGE CAROUSEL (optionnel futur usage) ───── */
 const ImageBannerItems: React.FC = () => {
@@ -61,23 +89,7 @@ const BannerSection: React.FC = () => {
   return (
     <section className={style.banner}>
       <div className={style.banner_container}>
-        <div className={style.block_banner_links}>
-          <h1>
-            Engineering <span>Experience</span>
-          </h1>
-
-          <p>Full-Stack Development • Robotics • Automation • Data Systems</p>
-
-          {/* LINKS */}
-          <div className={style.banner_links}>
-            {LINKS.map((link) => (
-              <a key={link.id} href={link.href} className={style.banner_link}>
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-
+        {/* <BlockBannerLinks/> */}
         {/* IMAGE BLOCK */}
         <ImageBannerItems />
       </div>
