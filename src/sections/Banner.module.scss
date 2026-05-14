@@ -93,18 +93,38 @@ $pad-h-md: 24px;
    
 }
 
- .image_banner_items{
-        position: absolute;
-        top: 0px;
-        
-        width: 100%;
+.block_banner_links{
+    position: relative;
+    z-index: 10000;
+}
 
-        // z-index:;
+.image_banner_items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-        .image_item{
-            position: absolute;
-            top: 0px;
-            width: 100%;
-            
-        }
-    }
+  width: 100%;
+  overflow-x: auto; // mieux que scroll (affiche scrollbar seulement si besoin)
+  scroll-behavior: smooth;
+
+  // optionnel : scroll horizontal plus propre
+  gap: 1rem;
+
+  & > * {
+    flex: 0 0 auto; // ⚠️ important pour scroll horizontal
+    width: 100%;
+  }
+
+  .image_item {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover; // évite les déformations
+    display: block;
+  }
+}
