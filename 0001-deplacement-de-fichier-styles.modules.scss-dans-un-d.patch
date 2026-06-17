@@ -1,0 +1,332 @@
+From cddc0a6f73df1e69d1286fdc4f0ed48419d234e4 Mon Sep 17 00:00:00 2001
+From: "Anthony M." <59492035+Athom242@users.noreply.github.com>
+Date: Mon, 15 Jun 2026 16:49:28 +0000
+Subject: [PATCH] deplacement de fichier styles.modules.scss dans un dossier
+ adapter
+
+---
+ src/main.tsx                                  |   4 +-
+ src/routers.tsx                               |   2 +-
+ .../AboutSection.module.scss                  |   0
+ src/{sections => styles}/Banner.module.scss   |   0
+ .../ContactSection.module.scss                |   0
+ .../ExperienceSection.module.scss             |   0
+ src/{sections => styles}/Footer.module.scss   |   0
+ src/{sections => styles}/Header.module.scss   |   0
+ .../LiveDashboardSection.module.scss          |   0
+ .../ProjectSection.module.scss                |   0
+ .../SkillsSection.module.scss                 |   0
+ .../TestimonialsSection.module.scss           |   0
+ .../VisualScrollBarProgess.module.scss        |   0
+ src/{ => styles}/sections/Banner.scss         |   0
+ src/{ => styles}/sections/Footer.scss         |   0
+ src/{ => styles}/sections/Header.scss         |   0
+ .../sections/ProjectSection.module.scss       | 194 ------------------
+ 17 files changed, 3 insertions(+), 197 deletions(-)
+ rename src/{sections => styles}/AboutSection.module.scss (100%)
+ rename src/{sections => styles}/Banner.module.scss (100%)
+ rename src/{sections => styles}/ContactSection.module.scss (100%)
+ rename src/{sections => styles}/ExperienceSection.module.scss (100%)
+ rename src/{sections => styles}/Footer.module.scss (100%)
+ rename src/{sections => styles}/Header.module.scss (100%)
+ rename src/{sections => styles}/LiveDashboardSection.module.scss (100%)
+ rename src/{sections => styles}/ProjectSection.module.scss (100%)
+ rename src/{sections => styles}/SkillsSection.module.scss (100%)
+ rename src/{sections => styles}/TestimonialsSection.module.scss (100%)
+ rename src/{sections => styles}/VisualScrollBarProgess.module.scss (100%)
+ rename src/{ => styles}/sections/Banner.scss (100%)
+ rename src/{ => styles}/sections/Footer.scss (100%)
+ rename src/{ => styles}/sections/Header.scss (100%)
+ delete mode 100644 src/styles/sections/ProjectSection.module.scss
+
+diff --git a/src/main.tsx b/src/main.tsx
+index 8ef8fa9..a72636c 100644
+--- a/src/main.tsx
++++ b/src/main.tsx
+@@ -1,11 +1,11 @@
+ import { StrictMode } from 'react'
+ import { createRoot } from 'react-dom/client'
+ import './index.css'
+-// import App from './App.tsx'
++import App from './App.tsx'
+ 
+ 
+ import { RouterProvider } from "react-router-dom";
+-import { router } from "./app/router.tsx";
++import { router } from "./routers.tsx";
+ 
+ import "./styles/index.scss";
+ 
+diff --git a/src/routers.tsx b/src/routers.tsx
+index fc7fe4c..e3cf892 100644
+--- a/src/routers.tsx
++++ b/src/routers.tsx
+@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
+ 
+ import App from "../app/App";
+ 
+-import Home from "../pages/Homes/Home";
++import Home from "../pages/Home/Home";
+ import Projects from "../pages/Projects/Projects";
+ import About from "../pages/About/About";
+ import Engineering from "../pages/Engineering/Engineering";
+diff --git a/src/sections/AboutSection.module.scss b/src/styles/AboutSection.module.scss
+similarity index 100%
+rename from src/sections/AboutSection.module.scss
+rename to src/styles/AboutSection.module.scss
+diff --git a/src/sections/Banner.module.scss b/src/styles/Banner.module.scss
+similarity index 100%
+rename from src/sections/Banner.module.scss
+rename to src/styles/Banner.module.scss
+diff --git a/src/sections/ContactSection.module.scss b/src/styles/ContactSection.module.scss
+similarity index 100%
+rename from src/sections/ContactSection.module.scss
+rename to src/styles/ContactSection.module.scss
+diff --git a/src/sections/ExperienceSection.module.scss b/src/styles/ExperienceSection.module.scss
+similarity index 100%
+rename from src/sections/ExperienceSection.module.scss
+rename to src/styles/ExperienceSection.module.scss
+diff --git a/src/sections/Footer.module.scss b/src/styles/Footer.module.scss
+similarity index 100%
+rename from src/sections/Footer.module.scss
+rename to src/styles/Footer.module.scss
+diff --git a/src/sections/Header.module.scss b/src/styles/Header.module.scss
+similarity index 100%
+rename from src/sections/Header.module.scss
+rename to src/styles/Header.module.scss
+diff --git a/src/sections/LiveDashboardSection.module.scss b/src/styles/LiveDashboardSection.module.scss
+similarity index 100%
+rename from src/sections/LiveDashboardSection.module.scss
+rename to src/styles/LiveDashboardSection.module.scss
+diff --git a/src/sections/ProjectSection.module.scss b/src/styles/ProjectSection.module.scss
+similarity index 100%
+rename from src/sections/ProjectSection.module.scss
+rename to src/styles/ProjectSection.module.scss
+diff --git a/src/sections/SkillsSection.module.scss b/src/styles/SkillsSection.module.scss
+similarity index 100%
+rename from src/sections/SkillsSection.module.scss
+rename to src/styles/SkillsSection.module.scss
+diff --git a/src/sections/TestimonialsSection.module.scss b/src/styles/TestimonialsSection.module.scss
+similarity index 100%
+rename from src/sections/TestimonialsSection.module.scss
+rename to src/styles/TestimonialsSection.module.scss
+diff --git a/src/sections/VisualScrollBarProgess.module.scss b/src/styles/VisualScrollBarProgess.module.scss
+similarity index 100%
+rename from src/sections/VisualScrollBarProgess.module.scss
+rename to src/styles/VisualScrollBarProgess.module.scss
+diff --git a/src/sections/Banner.scss b/src/styles/sections/Banner.scss
+similarity index 100%
+rename from src/sections/Banner.scss
+rename to src/styles/sections/Banner.scss
+diff --git a/src/sections/Footer.scss b/src/styles/sections/Footer.scss
+similarity index 100%
+rename from src/sections/Footer.scss
+rename to src/styles/sections/Footer.scss
+diff --git a/src/sections/Header.scss b/src/styles/sections/Header.scss
+similarity index 100%
+rename from src/sections/Header.scss
+rename to src/styles/sections/Header.scss
+diff --git a/src/styles/sections/ProjectSection.module.scss b/src/styles/sections/ProjectSection.module.scss
+deleted file mode 100644
+index 37a607c..0000000
+--- a/src/styles/sections/ProjectSection.module.scss
++++ /dev/null
+@@ -1,194 +0,0 @@
+-.projects {
+-  padding: 120px 10%;
+-  background: #0a0a09;
+-  color: #ffffff;
+-  position: relative;
+-}
+-
+-/* =========================
+-   HEADER
+-========================= */
+-.header {
+-  margin-bottom: 60px;
+-
+-  h2 {
+-    font-size: 3rem;
+-    font-weight: 700;
+-    letter-spacing: -1px;
+-  }
+-
+-  p {
+-    margin-top: 10px;
+-    max-width: 650px;
+-    opacity: 0.7;
+-    line-height: 1.6;
+-  }
+-}
+-
+-/* =========================
+-   GRID
+-========================= */
+-.grid {
+-  display: grid;
+-  grid-template-columns: repeat(3, 1fr);
+-  gap: 25px;
+-
+-  @media (max-width: 1024px) {
+-    grid-template-columns: repeat(2, 1fr);
+-  }
+-
+-  @media (max-width: 640px) {
+-    grid-template-columns: 1fr;
+-  }
+-}
+-
+-/* =========================
+-   CARD
+-========================= */
+-.card {
+-  position: relative;
+-  padding: 22px;
+-  border: 1px solid rgba(255, 255, 255, 0.08);
+-  background: rgba(255, 255, 255, 0.02);
+-  transition: all 0.35s ease;
+-  overflow: hidden;
+-  cursor: pointer;
+-
+-  &:hover {
+-    transform: translateY(-10px);
+-    border-color: rgba(200, 240, 85, 0.6);
+-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+-  }
+-}
+-
+-/* =========================
+-   TOP ROW (id + status)
+-========================= */
+-.cardTop {
+-  display: flex;
+-  justify-content: space-between;
+-  align-items: center;
+-  margin-bottom: 12px;
+-}
+-
+-.id {
+-  font-size: 0.75rem;
+-  opacity: 0.4;
+-}
+-
+-/* STATUS */
+-.status {
+-  font-size: 0.7rem;
+-  padding: 4px 8px;
+-  border-radius: 4px;
+-  letter-spacing: 0.5px;
+-}
+-
+-.done {
+-  background: rgba(124, 255, 155, 0.1);
+-  color: #7cff9b;
+-  border: 1px solid rgba(124, 255, 155, 0.3);
+-}
+-
+-.progress {
+-  background: rgba(255, 211, 124, 0.1);
+-  color: #ffd37c;
+-  border: 1px solid rgba(255, 211, 124, 0.3);
+-}
+-
+-/* =========================
+-   TITLE
+-========================= */
+-.title {
+-  font-size: 1.25rem;
+-  font-weight: 600;
+-  margin-bottom: 10px;
+-  transition: 0.3s ease;
+-}
+-
+-.card:hover .title {
+-  color: #c8f055;
+-}
+-
+-/* =========================
+-   DESCRIPTION
+-========================= */
+-.description {
+-  font-size: 0.9rem;
+-  opacity: 0.7;
+-  line-height: 1.5;
+-  margin-bottom: 14px;
+-}
+-
+-/* =========================
+-   STACK PRINCIPALE
+-========================= */
+-.stack {
+-  display: flex;
+-  flex-wrap: wrap;
+-  gap: 6px;
+-  margin-bottom: 12px;
+-}
+-
+-.tech {
+-  font-size: 0.7rem;
+-  padding: 4px 6px;
+-  border: 1px solid rgba(255, 255, 255, 0.1);
+-  opacity: 0.8;
+-  transition: 0.2s ease;
+-
+-  &:hover {
+-    border-color: #c8f055;
+-    color: #c8f055;
+-  }
+-}
+-
+-/* =========================
+-   TECH LIST
+-========================= */
+-.techList {
+-  display: flex;
+-  flex-wrap: wrap;
+-  gap: 8px;
+-  font-size: 0.75rem;
+-  opacity: 0.5;
+-}
+-
+-/* =========================
+-   FOOTER ACTIONS
+-========================= */
+-.footer {
+-  margin-top: 16px;
+-  display: flex;
+-  justify-content: space-between;
+-  font-size: 0.85rem;
+-
+-  a {
+-    color: #c8f055;
+-    text-decoration: none;
+-    transition: 0.2s ease;
+-
+-    &:hover {
+-      opacity: 0.7;
+-      transform: translateX(3px);
+-    }
+-  }
+-}
+-
+-/* =========================
+-   MICRO ANIMATION (entrée futur upgrade)
+-========================= */
+-.card {
+-  animation: fadeUp 0.6s ease forwards;
+-}
+-
+-@keyframes fadeUp {
+-  from {
+-    opacity: 0;
+-    transform: translateY(20px);
+-  }
+-  to {
+-    opacity: 1;
+-    transform: translateY(0);
+-  }
+-}
+\ No newline at end of file
+-- 
+2.53.0.windows.1
+
