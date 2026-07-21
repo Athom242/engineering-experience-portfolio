@@ -1,0 +1,19 @@
+// Styles globaux
+@use "./global";
+
+
+
+// Styles des pages globales
+@use "./pages/App";
+@use "./pages/Home";
+@use "./pages/About";
+@use "./pages/Contact";
+@use "./pages/Engineering";
+@use "./pages/Projects";
+
+// Tailwind
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+
+@import "tailwindcss";

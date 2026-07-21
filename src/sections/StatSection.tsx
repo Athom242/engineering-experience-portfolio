@@ -1,19 +1,20 @@
 import React from 'react';
+import styles from "../styles/sections/StatSection.module.scss";
 
 
 const StatSection: React.FC = () => {
   return (
-    <section className="stat-section">
-        <div className="stat-container">
-            <div className="stat-item">
+    <section className={styles.StatSection}>
+        <div className={styles.StatContainer}>
+            <div className={styles.StatItem}>
                 <h2>10+</h2>
                 <p>Projects Completed</p>
             </div>
-            <div className="stat-item">
+            <div className={styles.StatItem}>
                 <h2>5</h2>
                 <p>Years of Experience</p>
             </div>
-            <div className="stat-item">
+            <div className={styles.StatItem}>
                 <h2>3</h2>
                 <p>Data Insights</p>
             </div>

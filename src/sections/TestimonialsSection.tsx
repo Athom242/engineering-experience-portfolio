@@ -3,7 +3,7 @@ import styles from "../styles/sections/TestimonialsSection.module.scss";
 
 const TestimonialsSection: React.FC = () => {
   return (
-    <div className={styles.testimonialsSection}>
+    <div className={styles.TestimonialsSection}>
       {/* Contenu des témoignages */}
     </div>
   );
