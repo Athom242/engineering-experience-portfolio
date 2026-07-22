@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import styles from "../styles/sections/ProjectSection.module.scss";
+import styles from "../../src/styles/sections/ProjectSection.module.scss";
 import { projectsData } from "../data/projet.data";
 import {type Projet } from "../types/projet.types";
 

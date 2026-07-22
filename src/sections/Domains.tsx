@@ -1,6 +1,6 @@
 import React from 'react';
 
-import style from './../styles/Domains.module.css';
+import style from '../styles/Domains.module.css';
 
 
 const DOMAIN_DATA = [
