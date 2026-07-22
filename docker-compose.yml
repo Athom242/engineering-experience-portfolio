@@ -1,11 +1,20 @@
 services:
   frontend:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: react_frontend
     ports:
       - "5173:5173"
     volumes:
+      # Synchronisation du code local avec le container
       - .:/app
+      # Empeche node_modules local d' ecraser celui du container 
       - /app/node_modules
+    environnement:
+      - CHOKDIDAR_USEPOLLING=true
+
     stdin_open: true
     tty: true
+
+    restart: unless-stopped
