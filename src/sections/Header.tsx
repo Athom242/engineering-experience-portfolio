@@ -1,25 +1,26 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import styles from "../styles/sections/Header.module.scss";
 import { type SiteConfig } from "../types/config.types";
+import {type RefObject,type MouseEvent} from "react";
 
-// 👉 tu importeras ta config réelle ici
+// import de la  config réelle ici
 import siteConfig from "../data/config.data";
 
 const Header: React.FC = () => {
   const config: SiteConfig = siteConfig;
 
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [lang, setLang] = useState<"EN" | "FR">(config.header.defaultLanguage);
+  const [scrolled, setScrolled] = useState(false); // information sur le scroll de l'etat du scroll de la section header
+  const [menuOpen, setMenuOpen] = useState(false); // variable permettant de savoir si l'etat d'ouverture du menu
+  const [lang, setLang] = useState<"EN" | "FR">(config.header.defaultLanguage); // choix de la langue du site internet
   const [dark, setDark] = useState(config.header.defaultTheme === "dark");
   const [active, setActive] = useState(config.header.navLinks[0]?.label || "");
 
-  const headerRef = useRef<HTMLElement>(null);
+  const headerRef:RefObject<HTMLElement|null> = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return ():void => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
