@@ -11,7 +11,7 @@ services:
       - .:/app
       # Empeche node_modules local d' ecraser celui du container 
       - /app/node_modules
-    environnement:
+    environment:
       - CHOKDIDAR_USEPOLLING=true
 
     stdin_open: true
